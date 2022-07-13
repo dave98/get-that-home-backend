@@ -17,5 +17,5 @@ class Property < ApplicationRecord
     validates :bathrooms, presence: true
     validates :area, presence: true
     validates :petsAllowed, presence: true
-    validates :about, presence: true, lenght: {minimun: 20, maximun: 500}, allow_blank: false
+    validates :about, presence: true, length: { in: 20..500 }, allow_blank: false
 end
