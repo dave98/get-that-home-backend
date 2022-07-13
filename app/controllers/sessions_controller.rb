@@ -11,6 +11,11 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        current_user.invalidate_token
+        if current_user && current_user.invalidate_token
+            render json: {}, status: :no_content
+        else
+            render json: nil, status: :internal_server_error
+        end
     end
+
 end

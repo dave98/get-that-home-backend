@@ -8,7 +8,7 @@ general_config = {
     many: { users: 100, properties: 300 },
 }
 
-current_config = :few
+current_config = :many
 
 User.destroy_all
 Property.destroy_all
@@ -43,6 +43,7 @@ general_config[current_config][:properties].times do
         bedrooms: rand(1..10), 
         bathrooms: rand(1..5), 
         area: rand(1..10000), 
+        petsAllowed: Faker::Boolean.boolean(true_ratio: 0.2), 
         about: Faker::Hipster.paragraph_by_chars(characters: 300) )
     if property.valid?
         property.save

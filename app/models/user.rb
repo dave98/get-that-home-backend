@@ -4,7 +4,9 @@ class User < ApplicationRecord
 
     has_many :properties, dependent: :destroy
     has_many :likes, dependent: :destroy
+    has_many :liked_properties, through: :likes, source: :property
     has_many :contacts, dependent: :destroy
+    has_many :contacted_properties, through: :contacts, source: :property
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :name, presence: :true, allow_blank: false
