@@ -89,5 +89,8 @@ test:
 production:
   <<: *default
   database: get_that_home_backend_production
-  username: get_that_home_backend
+  username: postgres
+  password: crazydave
+  host: localhost
+  port: 5432
   password: <%= ENV["GET_THAT_HOME_BACKEND_DATABASE_PASSWORD"] %>
