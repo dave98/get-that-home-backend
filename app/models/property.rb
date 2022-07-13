@@ -8,7 +8,7 @@ class Property < ApplicationRecord
     enum propertyType: { aparment: 0, house: 1}
 
     validates :operationType, presence: true
-    validates :address, presence: true, lenght: { minimun: 10,  maximun: 100}, allow_blank: false
+    validates :address, presence: true, length: { in: 10..100 }, allow_blank: false
     validates :rentType, presence: true
     validates :rentAmount, presence: true
     validates :maintenance, presence: true
