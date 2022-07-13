@@ -14,17 +14,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_223839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "contacted", id: false, force: :cascade do |t|
+  create_table "contacts", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "property_id", null: false
-    t.index ["property_id", "user_id"], name: "index_contacted_on_property_id_and_user_id", unique: true
-    t.index ["user_id", "property_id"], name: "index_contacted_on_user_id_and_property_id", unique: true
+    t.index ["property_id", "user_id"], name: "index_contacts_on_property_id_and_user_id", unique: true
+    t.index ["user_id", "property_id"], name: "index_contacts_on_user_id_and_property_id", unique: true
   end
 
-  create_table "liked", id: false, force: :cascade do |t|
+  create_table "likes", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "property_id", null: false
-    t.index ["user_id", "property_id"], name: "index_liked_on_user_id_and_property_id", unique: true
+    t.index ["user_id", "property_id"], name: "index_likes_on_user_id_and_property_id", unique: true
   end
 
   create_table "properties", force: :cascade do |t|
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_223839) do
     t.integer "bedrooms"
     t.integer "bathrooms"
     t.integer "area"
-    t.boolean "petsAllowed", default: false
+    t.boolean "petsAllowed"
     t.text "about"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

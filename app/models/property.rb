@@ -1,7 +1,7 @@
 class Property < ApplicationRecord
     belongs_to :user
-    has_many :liked, dependent: :destroy
-    has_many :contacted, dependent: :destroy
+    has_many :likes, dependent: :destroy
+    has_many :contacts, dependent: :destroy
 
     enum operationType: { rent: 0, sale: 1 }
     enum rentType: { weekly: 0, monthly: 1, anual: 2, custom: 3 }
@@ -16,6 +16,6 @@ class Property < ApplicationRecord
     validates :bedrooms, presence: true
     validates :bathrooms, presence: true
     validates :area, presence: true
-    validates :petsAllowed, presence: true
+    validates :petsAllowed, inclusion: { in: [true, false]}
     validates :about, presence: true, length: { in: 20..500 }, allow_blank: false
 end
