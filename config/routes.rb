@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   resource :properties do
     get "/index", to: "properties#index"
     get "/owned", to: "properties#owned"
+    get "/:id", to: "properties#show"
+    patch "/:id", to: "properties#update"
+    delete "/:id", to: "properties#destroy"
   end
 end
