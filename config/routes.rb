@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/profile", to: "users#show"
   patch "/profile", to: "users#update"
   post "/signup", to: "users#create"
+  post "/attach", to:"users#attach_image"
 
   # Sessions
   post "/login", to: "sessions#create"
@@ -15,5 +16,6 @@ Rails.application.routes.draw do
     get "/:id", to: "properties#show"
     patch "/:id", to: "properties#update"
     delete "/:id", to: "properties#destroy"
+    post "/:id/attach", to: "properties#attach_images"
   end
 end

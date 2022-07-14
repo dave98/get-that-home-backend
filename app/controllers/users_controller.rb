@@ -1,5 +1,5 @@
 class UsersController <ApplicationController
-    skip_before_action :require_login, only: :create
+    skip_before_action :require_login, only: [ :create ]
 
     #------------------
     def create 
@@ -26,6 +26,16 @@ class UsersController <ApplicationController
         end
     end
 
+    #-------------------
+    def attach_image
+        current_user = User.find(params[:id])
+        if current_user.update(attach_params)
+            render json: current_user, status: :ok
+        else
+            render json: {errors: user.errors }, status: :unprocessable_entity
+        end
+    end
+
     private
 
     #------------------
@@ -36,4 +46,9 @@ class UsersController <ApplicationController
     def update_user_params
         params.permit(:name, :password)
     end
+
+    def attach_params
+        params.require(:user).permit(:avatar)
+    end
+    
 end

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_secure_token
     has_secure_password
+    has_one_attached :avatar
 
     has_many :properties, dependent: :destroy
     has_many :likes, dependent: :destroy
@@ -23,4 +24,7 @@ class User < ApplicationRecord
         user
     end
 
+    def avatar_url
+        Rails.application.routes.url_helpers.url_for(avatar) if avatar.attached?
+    end
 end
