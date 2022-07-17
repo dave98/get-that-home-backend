@@ -7,11 +7,9 @@ class PropertiesController <ApplicationController
     end
 
     def index
-        if current_user
-            render json: Property.where.not(user: current_user), status: :ok
-        else
-            render json: Property.all, status: :ok
-        end
+        @properties = Property.all
+        @properties = Properties::Filter.call(@properties, property_params)
+        render json: @properties, status: :ok
     end
     
     def show
@@ -66,7 +64,9 @@ class PropertiesController <ApplicationController
             :bathrooms, 
             :area, 
             :petsAllowed, 
-            :about
+            :about,
+            # :min_price,
+            # :max_price,
         )
     end  
     
