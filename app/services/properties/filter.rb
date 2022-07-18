@@ -26,12 +26,12 @@ class Properties::Filter
     if options[:bedrooms].present?
       @resources = resources.where("bedrooms >= ?", options[:bedrooms])
     end
-    # if options[:max_price].present?
-    #   @resources = resources.where("rentAmount <= ?", options[:max_price])
-    # end
-    # if options[:min_price].present?
-    #   @resources = resources.where("rentAmount >= ?", options[:min_price])
-    # end
+    if options[:max_price].present?
+      @resources = resources.where( "\"rentAmount\" <= ?", options[:max_price] )
+    end
+    if options[:min_price].present?
+      @resources = resources.where("\"rentAmount\" >= ?", options[:min_price] )
+    end
     if options[:address].present?
       @resources = resources.where("address ILIKE ?", "%#{options[:address]}%")
     end

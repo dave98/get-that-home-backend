@@ -65,8 +65,8 @@ class PropertiesController <ApplicationController
             :area, 
             :petsAllowed, 
             :about,
-            # :min_price,
-            # :max_price,
+            :max_price,
+            :min_price,
         )
     end  
     
