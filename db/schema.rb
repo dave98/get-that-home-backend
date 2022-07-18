@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_14_212313) do
     t.integer "bedrooms"
     t.integer "bathrooms"
     t.integer "area"
-    t.boolean "petsAllowed"
+    t.boolean "petsAllowed", default: false
     t.text "about"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
