@@ -1,0 +1,11 @@
+development:
+  cloud_name: <%= ENV['CLOUD_NAME'] %>
+  api_key: <%= ENV['API_KEY'] %>
+  api_secret: <%= ENV['API_SECRET'] %>
+
+production:
+  cloud_name: "dvep7zmzh"
+  api_key: "644876246161593"
+  api_secret: "hMY3gGe5FR0-SYZlhdp3paJqrtg"
+  secure: true
+  cdn_domain: true
