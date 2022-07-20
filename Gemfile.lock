@@ -237,6 +237,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    unf_ext (0.0.8.2-x64-mingw-ucrt)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -276,7 +277,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.17

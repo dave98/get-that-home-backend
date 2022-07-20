@@ -20,11 +20,11 @@ class Properties::Filter
     if options[:rentType].present?
       @resources = resources.where(rentType: options[:rentType])
     end
-    if options[:bathrooms].present?
-      @resources = resources.where("bathrooms >= ?", options[:bathrooms])
-    end
     if options[:bedrooms].present?
       @resources = resources.where("bedrooms >= ?", options[:bedrooms])
+    end
+    if options[:bathrooms].present?
+      @resources = resources.where("bathrooms >= ?", options[:bathrooms])
     end
     if options[:max_price].present?
       @resources = resources.where( "\"rentAmount\" <= ?", options[:max_price] )

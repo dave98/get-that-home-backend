@@ -8,7 +8,7 @@ general_config = {
     many: { users: 100, properties: 300 },
 }
 
-current_config = :few
+current_config = :medium
 
 puts "Destroying" 
 Like.destroy_all
