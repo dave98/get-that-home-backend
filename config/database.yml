@@ -24,10 +24,10 @@ default: &default
 development:
   <<: *default
   database: get_that_home_backend_development
-  username: postgres
-  password: crazydave
-  host: localhost
-  port: 5432
+  # username: postgres
+  # password: crazydave
+  # host: localhost
+  # port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,10 +62,10 @@ development:
 test:
   <<: *default
   database: get_that_home_backend_test
-  username: postgres
-  password: crazydave
-  host: localhost
-  port: 5432
+  # username: postgres
+  # password: crazydave
+  # host: localhost
+  # port: 5432
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -93,4 +93,4 @@ production:
   password: 0a4e118e137d496a90c8423982c2e198efdc220d1ce910ee943cf33c73ec376e
   host: ec2-3-223-169-166.compute-1.amazonaws.com
   port: 5432
-  # password: <%= ENV["GET_THAT_HOME_BACKEND_DATABASE_PASSWORD"] %>
+  password: <%= ENV["GET_THAT_HOME_BACKEND_DATABASE_PASSWORD"] %>
