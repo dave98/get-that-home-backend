@@ -20,6 +20,7 @@ puts "Users"
 Property.destroy_all
 puts "Properties"
 
+
 puts "Seeding custom users"
 
 user = User.create(name: "DaveSeeker", password: "123456", phone: "99999999", email: "dave.seeker@gmail.com")
