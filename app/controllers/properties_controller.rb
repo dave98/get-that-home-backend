@@ -68,6 +68,8 @@ class PropertiesController <ApplicationController
             :closed,
             :max_price,
             :min_price,
+            :min_area,
+            :max_area
         )
     end  
     

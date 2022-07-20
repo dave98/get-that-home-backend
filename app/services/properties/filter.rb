@@ -38,6 +38,12 @@ class Properties::Filter
     if options[:petsAllowed].present?
       @resources = resources.where(petsAllowed: options[:petsAllowed])
     end
+    if options[:min_area].present?
+      @resources = resources.where("area >= ?", options[:min_area])
+    end
+    if options[:max_area].present?
+      @resources = resources.where("area <= ?", options[:max_area])
+    end
     resources
   end 
 end
