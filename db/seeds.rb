@@ -51,7 +51,7 @@ general_config[current_config][:properties].times do
     property = Property.new(
         user: created_users.sample,
         operationType: :rent,
-        address: Faker::Address.full_address, 
+        address: Faker::Address.full_address + ", " + Faker::Address.city + ", " + Faker::Address.country,
         rentType: :monthly,
         rentAmount: rand(1..2000), 
         maintenance: rand(1..500), 
@@ -71,6 +71,20 @@ general_config[current_config][:properties].times do
     else
         p property.errors.full_messages
     end
+end
+
+puts "Seeding likes"
+created_users = User.all
+created_properties = Property.all
+general_config[current_config][:users].times do
+    created_users.sample.likes.create(property: created_properties.sample)
+end
+
+puts "Seeding contacts"
+created_users = User.all
+created_properties = Property.all
+general_config[current_config][:users].times do
+    created_users.sample.contacts.create(property: created_properties.sample, message: Faker::Hipster.paragraph_by_chars(characters: 20))
 end
 
 puts "Completed"

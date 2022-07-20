@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  resources :likes, only: [:index, :create, :destroy]
+  resources :contacts, only: [:index, :create, :destroy]
   # Properties"
   resource :properties do
     get "/index", to: "properties#index"

@@ -66,7 +66,8 @@ class PropertiesController <ApplicationController
             :bathrooms, 
             :area, 
             :petsAllowed, 
-            :about
+            :about,
+            :closed
         )
     end  
     
