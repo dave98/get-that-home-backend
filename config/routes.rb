@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resource :properties do
     get "/index", to: "properties#index"
     get "/owned", to: "properties#owned"
+    post "/create-with-images", to: "properties#create_with_images"
+    patch "/update-with-images/:id", to: "properties#update_with_images"
     get "/:id", to: "properties#show"
     patch "/:id", to: "properties#update"
     delete "/:id", to: "properties#destroy"

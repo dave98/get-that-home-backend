@@ -1,6 +1,6 @@
 class PropertiesController <ApplicationController
     skip_before_action :require_login, only: %i[index]
-    before_action :set_property, only: %i[ show update destroy attach_images]
+    before_action :set_property, only: %i[ show update update_with_images destroy attach_images]
 
     def owned
         render json: current_user.properties, status: :ok
@@ -26,8 +26,26 @@ class PropertiesController <ApplicationController
         end
     end
 
+    def create_with_images
+        property = Property.new(property_with_image_params)
+        property.user = current_user
+        if property.save
+            render json: DetailedPropertySerializer.new(property).serializable_hash[:data][:attributes], status: :created
+        else
+            render json: {errors: property.errors}, status: :unprocessable_entity
+        end
+    end
+
     def update
         if @property.update(property_params)
+            render json: DetailedPropertySerializer.new(@property).serializable_hash[:data][:attributes], status: :ok
+        else
+            render json: {errors: @property.errors}, status: :unprocessable_entity
+        end
+    end
+
+    def update_with_images
+        if @property.update(property_with_image_params)
             render json: DetailedPropertySerializer.new(@property).serializable_hash[:data][:attributes], status: :ok
         else
             render json: {errors: @property.errors}, status: :unprocessable_entity
@@ -75,5 +93,23 @@ class PropertiesController <ApplicationController
     
     def property_image_params
         params.require(:property).permit(images: [])
+    end
+
+    def property_with_image_params
+        params.require(:property).permit(
+            :operationType,
+            :address,
+            :rentType,
+            :rentAmount,
+            :maintenance,
+            :propertyType,
+            :bedrooms,
+            :bathrooms,
+            :area,
+            :petsAllowed,
+            :about,
+            :closed,
+            images: []
+        )
     end
 end
